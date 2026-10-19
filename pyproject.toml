@@ -8,8 +8,10 @@ version = "0.1.0"
 description = "Baagupadu sandbox project A: Cognitive Profiler Engine (backend)"
 requires-python = ">=3.11"
 dependencies = [
+    "alembic>=1.13",
     "asyncpg>=0.29",
     "fastapi>=0.115",
+    "pgvector>=0.3",
     "pydantic>=2.7",
     "pydantic-settings>=2.3",
     "sqlalchemy[asyncio]>=2.0.30",
@@ -57,7 +59,7 @@ select = [
 python_version = "3.11"
 strict = true
 mypy_path = "backend"
-files = ["backend/app", "tests"]
+files = ["backend/app", "backend/migrations/env.py", "tests"]
 plugins = ["pydantic.mypy"]
 
 [tool.pydantic-mypy]

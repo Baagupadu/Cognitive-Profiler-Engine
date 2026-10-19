@@ -41,6 +41,9 @@ pip install -e ".[dev]"
 # Database only (PostgreSQL + pgvector)
 docker compose up -d db
 
+# Create or update the database tables
+alembic upgrade head
+
 # Backend on your machine, with auto-reload
 uvicorn app.main:create_app --factory --reload
 
@@ -69,6 +72,8 @@ mypy                    # static types (strict)
 pytest --cov            # all tests; needs the database running
 pytest -m "not integration"   # unit tests only, no database needed
 ```
+
+Integration tests rebuild the database schema, so don't point `DATABASE_URL` at data you want to keep.
 
 ## How we work
 
